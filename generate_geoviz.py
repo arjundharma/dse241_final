@@ -15,7 +15,7 @@ from bokeh.models import (CDSView, ColorBar, ColumnDataSource,BooleanFilter, Gro
                           PanTool,WheelZoomTool,BoxZoomTool,
                           LinearColorMapper, Slider, WMTSTileSource)
 from bokeh.layouts import column, row, widgetbox
-from bokeh.palettes import brewer
+from bokeh.palettes import brewer, Category10
 from bokeh.plotting import figure
 
 from bokeh.plotting import figure, output_file, show
@@ -33,18 +33,18 @@ plot_df['total_effected'] = plot_df['total_effected']
 def scale_data(df):
     df['total_effected_scaled'] = (scaler.fit_transform(df['total_effected'].values.reshape(-1,1)) *200) + 5
     return df
-    plot_df = scale_data(plot_df)
-
 
 def get_year_data(year):
     terrorism_year = plot_df[plot_df['Year'] == year]
     return terrorism_year
 
 
-palette = brewer['Paired']
+
 attack_types = list(plot_df['AttackType'].unique())
 num_groups = len(attack_types)
+palette = Category10 
 colors = palette[num_groups]
+# colors = inferno(num_groups)
 color_map = {}
 
 for i,g in enumerate(plot_df['AttackType'].unique()):
@@ -52,6 +52,8 @@ for i,g in enumerate(plot_df['AttackType'].unique()):
 
 scaler = MinMaxScaler()
 plot_df['color'] = [ color_map[x] for x in list(plot_df['AttackType'].values)]
+
+plot_df = scale_data(plot_df)
 
 start_year = get_year_data(2017)
 left = min(start_year['E']) - 1000
