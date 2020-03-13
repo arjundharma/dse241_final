@@ -4,7 +4,6 @@ from bokeh.io import curdoc
 from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 import numpy as np
-import geopandas
 import json
 
 from bokeh.io import show
@@ -21,8 +20,6 @@ from bokeh.plotting import figure
 from bokeh.plotting import figure, output_file, show
 from bokeh.tile_providers import Vendors, get_provider
 from pyproj import Proj, transform
-import numpy as np
-from multiprocessing import Pool
 
 
 terrorism_df = pd.read_csv('terrorism_fixed.csv')

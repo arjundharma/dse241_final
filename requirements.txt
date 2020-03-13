@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 numpy
 pandas
 sklearn
@@ -6,4 +7,8 @@ seaborn
 matplotlib
 plotly
 bokeh
+=======
+bokeh
+sklearn
+>>>>>>> b7a98263395f2dc4ebf189fe544a6ff37fc5fb7f
 pyproj
