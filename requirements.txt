@@ -1,0 +1,9 @@
+numpy
+pandas
+sklearn
+folium
+seaborn
+matplotlib
+plotly
+bokeh
+pyproj
