@@ -23,6 +23,7 @@ from pyproj import Proj, transform
 
 
 terrorism_df = pd.read_csv('terrorism_fixed.csv')
+terrorism_df[['city', 'Target', 'Summary', 'Motive']] = terrorism_df[['city', 'Target', 'Summary', 'Motive']].fillna("Missing")
 plot_df = terrorism_df.dropna()
 plot_df = plot_df[plot_df['total_effected'] > 0]
 plot_df['total_effected'] = plot_df['total_effected'] 
